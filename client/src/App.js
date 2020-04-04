@@ -6,44 +6,42 @@ import axios from 'axios';
 
 export default class App extends Component {
   //
+  state = {
+    cars: []
+  };
+
   componentDidMount() {
-    axios.get('/api/users').then(response => {
+    axios.get('/api/getcars').then(response => {
       console.log(response.data);
     });
+    // axios.get('/api/users').then(response => {
+    //   console.log(response.data);
+    // });
   }
+
+  onCarSubmit = () => {
+    axios
+      .post('/api/addcar', {
+        brand: 'Ford',
+        model: 'Focus',
+        year: 2018,
+        avail: true
+      })
+      .then(response => {
+        console.log(response.data);
+      });
+  };
 
   render() {
     return (
-      <>
-        <h1>Hello Bozo</h1>
-      </>
+      <div className="App">
+        <h1>Add Car</h1>
+        <button onClick={() => this.onCarSubmit()}>Add car to db</button>
+        <hr />
+        {this.state.cars.map((car, index) => (
+          <div key={index}> - {car.brand}</div>
+        ))}
+      </div>
     );
   }
 }
-
-// import React from 'react';
-// import logo from './logo.svg';
-// import './App.css';
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React Bozo
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
-// export default App;
