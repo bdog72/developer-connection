@@ -7,12 +7,13 @@ import axios from 'axios';
 export default class App extends Component {
   //
   state = {
-    cars: []
+    cars: [],
   };
 
   componentDidMount() {
-    axios.get('/api/getcars').then(response => {
-      console.log(response.data);
+    axios.get('/api/getcars').then((response) => {
+      // console.log(response.data);
+      this.setState({ cars: response.data });
     });
     // axios.get('/api/users').then(response => {
     //   console.log(response.data);
@@ -25,9 +26,9 @@ export default class App extends Component {
         brand: 'Ford',
         model: 'Focus',
         year: 2018,
-        avail: true
+        avail: true,
       })
-      .then(response => {
+      .then((response) => {
         console.log(response.data);
       });
   };
