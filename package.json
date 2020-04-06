@@ -1,23 +1,29 @@
 {
-  "name": "101",
+  "name": "react-book-shelf",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "server": "nodemon server.js",
-    "client": "npm run start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bdog72/react-book-shelf.git"
+  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bdog72/react-book-shelf/issues"
+  },
+  "homepage": "https://github.com/bdog72/react-book-shelf#readme",
   "dependencies": {
-    "axios": "^0.19.2",
+    "bcrypt": "^4.0.1",
     "body-parser": "^1.19.0",
     "concurrently": "^5.1.0",
+    "cookie-parser": "^1.4.5",
     "express": "^4.17.1",
-    "mongodb": "^3.4.1",
-    "mongoose": "^5.8.2"
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.7"
   }
 }
