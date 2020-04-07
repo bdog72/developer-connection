@@ -1,0 +1,12 @@
+cd -> mongo/bin
+
+./mongod --dbpath ~/mongo-data
+
+
+
+main registered user
+
+test@test.com
+password123
+Brian
+Bycynski
