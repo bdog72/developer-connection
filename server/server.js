@@ -8,6 +8,7 @@ const config = require('./config/config').get(process.env.NODE_ENV);
 const app = express();
 
 const user = require('./routes/user');
+const books = require('./routes/books');
 
 mongoose.connect(config.DATABASE, {
   useNewUrlParser: true,
@@ -20,6 +21,7 @@ mongoose.connect(config.DATABASE, {
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use('/api/users', user);
+app.use('/api/books', books);
 
 const port = process.env.PORT || 3001;
 
