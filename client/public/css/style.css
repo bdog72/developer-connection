@@ -58,9 +58,12 @@ header .navItem span {
   color: white;
   margin-right: 10px;
 }
+
 nav .nav_split {
   padding: 10px;
   margin-top: 20px;
+  /* border: px solid #fff; */
+  text-align: center;
 }
 
 .book_item {
@@ -501,6 +504,7 @@ tr:nth-child(even) {
 .form_container {
   width: 500px;
   padding-top: 80px;
+  /* border: px solid black; */
 }
 .form_container h1 {
   color: #00bcd4;
