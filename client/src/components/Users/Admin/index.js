@@ -2,12 +2,10 @@
 //
 import React from 'react';
 
-const Home = () => {
+export default function Admin() {
   return (
     <div>
-      <h1>Bozo</h1>
+      <h1>Admin Page Bozo</h1>
     </div>
   );
-};
-
-export default Home;
+}

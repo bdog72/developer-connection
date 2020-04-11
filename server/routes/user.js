@@ -45,6 +45,12 @@ router.post('/login', (req, res) => {
 
         res.cookie('auth', user.token).json({
           auth: true,
+          userData: {
+            id: user._id,
+            email: user.email,
+            name: user.name,
+            lastname: user.lastname,
+          },
         });
       });
     });
