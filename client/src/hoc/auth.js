@@ -5,7 +5,7 @@ import { auth } from '../store/actions/user_actions';
 
 import { connect } from 'react-redux';
 
-export default function (ComposedClass) {
+export default function (ComposedClass, reload) {
   class AuthenticationCheck extends Component {
     //
     state = {
@@ -19,9 +19,13 @@ export default function (ComposedClass) {
         this.setState({ loading: false });
 
         if (!user) {
-          this.props.history.push('/login');
+          if (reload) {
+            this.props.history.push('/login');
+          }
         } else {
-          this.props.history.push('/admin');
+          if (reload === false) {
+            this.props.history.push('/admin');
+          }
         }
       });
     }

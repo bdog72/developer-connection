@@ -1,7 +1,7 @@
 //
 //
 
-import { USER_LOGIN, USER_AUTH } from '../types';
+import { USER_LOGIN, USER_AUTH, USER_LOGOUT } from '../types';
 
 export default function (state = {}, action) {
   switch (action.type) {
@@ -16,6 +16,12 @@ export default function (state = {}, action) {
         ...state,
         auth: action.payload.auth ? action.payload.auth : false,
         userData: action.payload.userData ? action.payload.userData : false,
+      };
+    case USER_LOGOUT:
+      return {
+        ...state,
+        auth: action.payload,
+        userData: false,
       };
     default:
       return state;
