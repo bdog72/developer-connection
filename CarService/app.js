@@ -1,41 +1,28 @@
+/* eslint-disable no-unused-vars */
 //
 //
-//
+const Car = require('./src/car/Car');
+const RacingCar = require('./src/car/RacingCar');
 
-class Car {
-  brand = '';
-  type = '';
-  year = null;
-
-  constructor(brand, type, year) {
-    this.brand = brand;
-    this.type = type;
-    this.year = year;
-  }
-
-  displayInfo() {
-    console.log(`${this.brand} ${this.type} - ${this.year}`);
-  }
-}
+// Object.prototype.displayInfo = function () {
+//   console.log('DISPLAYING OBJECT INFO!!!!!!');
+// };
 
 function runApp() {
-  const car = new Car('Nissan', 'GTR', 2016);
-  // const car = new Car();
-  // car.brand = 'Mazda';
-  // car.type = 3;
-  // car.year = 2010;
-  const car2 = new Car('Ford', 'Mustang', 2020);
-  // const car2 = {
-  //   brand: 'Ford',
-  //   type: 'Mustang',
-  //   produceYear: 2020,
-  //   displayInfo: function () {
-  //     console.log(`${this.brand} ${this.type} - ${this.produceYear}`);
-  //   },
-  // };
+  const car = new Car({ brand: 'Mazda', type: 3, year: 2010 });
+  const car2 = new Car({ type: 'Mustang', brand: 'Ford', year: 2019 });
 
+  const racingCar = new RacingCar({
+    category: 'F1',
+    brand: 'Nissan',
+    type: 'GTR',
+    year: 2020,
+  });
+
+  racingCar.displayInfo();
   car.displayInfo();
-  car2.displayInfo();
+
+  const cars = [car, car2, racingCar];
 }
 
 runApp();
