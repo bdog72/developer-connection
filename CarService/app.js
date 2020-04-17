@@ -1,9 +1,12 @@
-/* eslint-disable no-unused-vars */
 //
 //
+
+const CarStorage = require('./src/car/CarStorage');
+const CarManager = require('./src/car/CarManager');
 const Car = require('./src/car/Car');
 const RacingCar = require('./src/car/RacingCar');
 const readline = require('readline-sync');
+
 const i = require('./src/lib/i');
 
 function runApp() {
@@ -11,70 +14,64 @@ function runApp() {
     console.log('Press "1" to add a car');
     console.log('Press "2" to remove a car');
     console.log('Press "3" to list all of the cars');
-    console.log('Press "exit" quit the program');
+    console.log('Press "exit" to quit to program');
   }
-
   const car = new Car({ brand: 'Mazda', type: 3, year: 2010 });
-  const car2 = new Car({ type: 'Mustang', brand: 'Ford', year: 2019 });
-  const car3 = new Car({ type: 'M6', brand: 'BMW', year: 2018 });
-  const car4 = new Car({ type: 'C500', brand: 'Mercedes', year: 2020 });
-
+  const car2 = new Car({ type: 'Mustang', brand: 'Ford', year: 2020 });
+  const car3 = new Car({ type: 'm6', brand: 'BMW', year: 2000 });
+  const car4 = new Car({ type: 'GTR', brand: 'Nissan', year: 2005 });
   const racingCar = new RacingCar({
-    category: 'F1',
-    brand: 'Nissan',
-    type: 'GTR',
+    category: 'f1',
+    brand: 'Supra',
+    type: 'Toyota',
     year: 2020,
   });
+  console.log('Bozo');
 
-  const cars = [car, car2, car3, car4, racingCar];
+  const cars = [car, car2, racingCar, car3, car4];
+  const carStorage = new CarStorage([...cars]);
+  const carManager = new CarManager();
 
   let appIsRunning = true;
-
   displayOptions();
 
   while (appIsRunning) {
-    let userInput = readline.question('Write Me Something: ').toLowerCase();
+    let userInput = readline.question('Write me something: ').toLowerCase();
 
     switch (userInput) {
       case '1':
-        console.log('Creating Car');
+        const newCar = carManager.createCar();
+        carStorage.addCar(newCar);
         break;
       case '2':
-        console.log('Removing Car');
+        const carId = carManager.askQuestion('Provide car id: \n');
+        carStorage.removeCar(carId);
         break;
       case '3':
-        cars.forEach(function (car) {
-          car.displayInfo();
-        });
+        carStorage.listCars();
         break;
       case 'exit':
-        console.log('GoodBye Bozo');
+        console.log('Good Bye!');
         appIsRunning = false;
         break;
       default:
-        console.log('Invalid Option');
-        break;
+        console.log('Invalid Option!');
     }
-
-    // if (userInput === '1') {
-    //   //
-    //   console.log('Creating Car');
-    // } else if (userInput === '2') {
-    //   //
-    //   console.log('Removing Car');
-    // } else if (userInput === '3') {
-    //   //
-    //   cars.forEach(function (car) {
-    //     car.displayInfo();
-    //   });
-    //   console.log('List all Cars');
-    // } else if (userInput === 'exit') {
-    //   console.log('GoodBye Bozo');
-    //   appIsRunning = false;
-    // } else {
-    //   console.log('Invalid Option');
-    // }
   }
 }
 
-runApp();
+// runApp();
+
+const runTestApp = function () {
+  const car = new Car({ brand: 'mercedes', type: 'benz', year: 1995 });
+  car.setCarDate();
+
+  const data = i.getDBData((dbData) => {
+    console.log(dbData);
+  });
+
+  console.log(data);
+  console.log('Finish runtestapp');
+};
+
+runTestApp();
