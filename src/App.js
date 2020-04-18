@@ -1,14 +1,15 @@
+//
+//
 import React from 'react';
 
-import Practice1 from './components/Practice1';
+import CounterApp from './components/CounterApp/CounterApp';
 
-function App() {
+const App = () => {
   return (
-    <div>
-      <h1>Bozo</h1>
-      <Practice1 />
-    </div>
+    <>
+      <CounterApp />
+    </>
   );
-}
+};
 
 export default App;

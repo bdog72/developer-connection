@@ -1,3 +1,5 @@
+//
+//
 const i = require('../lib/i');
 
 class Car {
@@ -5,6 +7,8 @@ class Car {
   type = '';
   produceYear = null;
   id = null;
+
+  testingData = 'Testing Data';
 
   constructor(carData) {
     this.brand = carData.brand;

@@ -1,17 +1,19 @@
 //
 //
+
+const Promise = require('./Promise');
+
 const i = (function () {
   return {
-    getDBData: function (callback) {
-      setTimeout(() => {
-        const data = 'Data from DB!';
-        callback(data);
-      }, 3000);
-      console.log('Before finishing of getDBData!');
-
-      return true;
+    getDBdata: function () {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          const data = 'Data from DB!';
+          resolve(data);
+          // reject('Cannot connect to DB!');
+        }, 3000);
+      });
     },
-
     getCurrentDate: function (callback) {
       const date = new Date().toUTCString();
       callback(date);

@@ -1,6 +1,5 @@
 //
 //
-
 const CarStorage = require('./src/car/CarStorage');
 const CarManager = require('./src/car/CarManager');
 const Car = require('./src/car/Car');
@@ -19,14 +18,13 @@ function runApp() {
   const car = new Car({ brand: 'Mazda', type: 3, year: 2010 });
   const car2 = new Car({ type: 'Mustang', brand: 'Ford', year: 2020 });
   const car3 = new Car({ type: 'm6', brand: 'BMW', year: 2000 });
-  const car4 = new Car({ type: 'GTR', brand: 'Nissan', year: 2005 });
+  const car4 = new Car({ type: 'c500', brand: 'Mercedes', year: 2005 });
   const racingCar = new RacingCar({
     category: 'f1',
-    brand: 'Supra',
-    type: 'Toyota',
+    brand: 'Toyota',
+    type: 'Supra',
     year: 2020,
   });
-  console.log('Bozo');
 
   const cars = [car, car2, racingCar, car3, car4];
   const carStorage = new CarStorage([...cars]);
@@ -66,12 +64,27 @@ const runTestApp = function () {
   const car = new Car({ brand: 'mercedes', type: 'benz', year: 1995 });
   car.setCarDate();
 
-  const data = i.getDBData((dbData) => {
-    console.log(dbData);
-  });
+  const data = i
+    .getDBdata()
+    .then((dbData) => {
+      return dbData + ' Added Data';
+    })
+    .then((changedData) => {
+      return changedData;
+    })
+    .then((data) => {
+      return data.substr(2, 9);
+    })
+    .then((data) => {
+      return data;
+    })
+    .catch((errorMessage) => {
+      console.log(errorMessage);
+    });
 
   console.log(data);
-  console.log('Finish runtestapp');
+
+  console.log('finishing of runTestApp!');
 };
 
 runTestApp();
