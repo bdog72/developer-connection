@@ -1,0 +1,23 @@
+//
+//
+@import './header.scss';
+
+@import './colors.scss';
+
+.navbar .nav-link.dropdown-toggle:hover {
+  color: $main-app-color;
+}
+
+.btn.btn-bwm-main {
+  border-color: $main-app-color;
+  color: $main-app-color;
+}
+
+.btn.btn-bwm-main:hover,
+.btn.btn-bwm-main:focus,
+.btn.btn-bwm-main:active {
+  background-color: #61dafb;
+  border-color: $main-app-color;
+  color: #fff;
+  box-shadow: none;
+}

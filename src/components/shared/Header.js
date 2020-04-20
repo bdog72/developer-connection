@@ -1,12 +1,14 @@
 //
 //
+/* eslint-disable jsx-a11y/anchor-is-valid */
+
 import React from 'react';
 
 const Header = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <a className="navbar-brand" href="#">
-        Navbar
+        BookWithMe
       </a>
       <button
         className="navbar-toggler"
@@ -23,13 +25,13 @@ const Header = () => {
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <form className="form-inline my-2 my-lg-0">
           <input
-            className="form-control mr-sm-2"
+            className="form-control mr-sm-2 bwm-search"
             type="search"
             placeholder="Search"
             aria-label="Search"
           />
           <button
-            className="btn btn-outline-success my-2 my-sm-0"
+            className="btn btn-outline-success btn-bwm-main my-2 my-sm-0"
             type="submit"
           >
             Search
@@ -42,11 +44,6 @@ const Header = () => {
               Home <span className="sr-only">(current)</span>
             </a>
           </li>
-          <li className="nav-item">
-            <a className="nav-link" href="#">
-              Link
-            </a>
-          </li>
           <li className="nav-item dropdown">
             <a
               className="nav-link dropdown-toggle"
@@ -57,7 +54,7 @@ const Header = () => {
               aria-haspopup="true"
               aria-expanded="false"
             >
-              Dropdown
+              Manage
             </a>
             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
               <a className="dropdown-item" href="#">
@@ -73,13 +70,13 @@ const Header = () => {
             </div>
           </li>
           <li className="nav-item">
-            <a
-              className="nav-link disabled"
-              href="#"
-              tabindex="-1"
-              aria-disabled="true"
-            >
-              Disabled
+            <a className="nav-link" href="#">
+              Login
+            </a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="#">
+              Register
             </a>
           </li>
         </ul>
