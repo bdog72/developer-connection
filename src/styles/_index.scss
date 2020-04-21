@@ -1,8 +1,27 @@
 //
 //
 @import './header.scss';
-
 @import './colors.scss';
+@import './rental-home.scss';
+
+html,
+body {
+  height: 100%;
+}
+
+.type- {
+  &apartment {
+    color: #a72da3;
+  }
+
+  &house {
+    color: #bf1818;
+  }
+
+  &condo {
+    color: #d68000;
+  }
+}
 
 .navbar .nav-link.dropdown-toggle:hover {
   color: $main-app-color;
