@@ -1,13 +1,19 @@
 //
 //
 import React, { Component } from 'react';
+import connect from '../store/connect';
 
-export default class Login extends Component {
+class Login extends Component {
   render() {
-    return (
-      <div>
-        <h1>Login</h1>
-      </div>
-    );
+    const { data } = this.props;
+    return <p>{JSON.stringify(data())}</p>;
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    data: state.data2,
+  };
+};
+
+export default connect(mapStateToProps)(Login);

@@ -4,12 +4,16 @@
 
 import React from 'react';
 
+import { Link } from 'react-router-dom';
+
+// import RentalHome from '../../pages/RentalHome';
+
 const Header = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a className="navbar-brand" href="#">
+      <Link className="navbar-brand" to="/">
         BookWithMe
-      </a>
+      </Link>
       <button
         className="navbar-toggler"
         type="button"
@@ -40,9 +44,9 @@ const Header = () => {
 
         <ul className="navbar-nav ml-auto">
           <li className="nav-item active">
-            <a className="nav-link" href="#">
+            <Link className="nav-link" to="/">
               Home <span className="sr-only">(current)</span>
-            </a>
+            </Link>
           </li>
           <li className="nav-item dropdown">
             <a
@@ -70,14 +74,14 @@ const Header = () => {
             </div>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">
+            <Link className="nav-link" to="/login">
               Login
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">
+            <Link className="nav-link" to="/register">
               Register
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

@@ -1,19 +1,22 @@
 //
 //
 import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+
+import { StateContext } from './state-context';
+import store from './store';
 
 import Header from './components/shared/Header';
-import RentalHome from './pages/RentalHome';
-
-import Login from './pages/Login';
-import Register from './pages/Register';
+import Routes from './Routes';
 
 const App = () => {
   return (
-    <div>
-      <Header />
-      <RentalHome />
-    </div>
+    <StateContext.Provider value={store}>
+      <Router>
+        <Header />
+        <Routes />
+      </Router>
+    </StateContext.Provider>
   );
 };
 
