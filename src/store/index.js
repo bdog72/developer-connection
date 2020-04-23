@@ -1,14 +1,17 @@
 //
 //
+import { createStore, combineReducers } from 'redux';
 
-import { rentalData } from './data';
+import rentals from './reducers/rentals';
 
-const store = {
-  rentals: () => {
-    return rentalData;
-  },
-  data1: () => ['1', '2', '3'],
-  data2: () => ['a', 'b', 'c'],
-};
+export function initStore() {
+  const reducers = combineReducers({
+    rentals,
 
-export default store;
+    data1: () => ['1', '2', '3', '4'],
+    data2: () => ['a', 'b', 'c'],
+  });
+
+  const store = createStore(reducers);
+  return store;
+}
