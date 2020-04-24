@@ -7,11 +7,12 @@ import rentals from './reducers/rentals';
 export function initStore() {
   const reducers = combineReducers({
     rentals,
-
-    data1: () => ['1', '2', '3', '4'],
-    data2: () => ['a', 'b', 'c'],
   });
 
-  const store = createStore(reducers);
+  const reduxExtension =
+    window.__REDUX_DEVTOOLS_EXTENSION__ &&
+    window.__REDUX_DEVTOOLS_EXTENSION__();
+
+  const store = createStore(reducers, reduxExtension);
   return store;
 }
