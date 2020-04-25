@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const RentalCard = ({ rental }) => {
   return (
-    <Link className="rental-link" to={`/rentals/:${rental._id}`}>
+    <Link className="rental-link" to={`/rentals/${rental._id}`}>
       <div className="card bwm-card">
         <img className="card-img-top" src={rental.image} alt={rental.title} />
         <div className="card-body">

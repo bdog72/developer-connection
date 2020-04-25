@@ -10,15 +10,6 @@ const rentals = (state = [], action) => {
     default:
       return state;
   }
-
-  //   if (action.type === 'FETCH_RENTALS') {
-  //     return action.rentals;
-  //   } else if (action.type === 'CREATE_RENTAL') {
-  //     return [...state, action.rental];
-  //   } else {
-  //     return state;
-  //   }
-  // };
 };
 
 export default rentals;

@@ -1,9 +1,9 @@
 //
 //
 import React from 'react';
-import RentalCard from '../components/rental/RentalCard';
+import RentalCard from 'components/rental/RentalCard';
 import { connect } from 'react-redux';
-import { fetchRentals } from '../actions';
+import { fetchRentals } from 'actions';
 
 class RentalHome extends React.Component {
   componentDidMount() {
@@ -22,7 +22,7 @@ class RentalHome extends React.Component {
 
     return (
       <div className="card-list">
-        <h1 className="page-title">Your Home All Around the World</h1>
+        <h1 className="page-title">Your Home All Around the Bozo</h1>
         <div className="row">{this.renderRentals(rentals)}</div>
       </div>
     );
