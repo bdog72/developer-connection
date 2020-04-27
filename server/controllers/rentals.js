@@ -30,12 +30,22 @@ exports.getRentalById = (req, res) => {
   });
 };
 
-// exports.createRental = (req, res) => {
-//   const rentalData = req.body;
-//   rentals.push(rentalData);
+exports.createRental = (req, res) => {
+  const rentalData = req.body;
 
-//   return res.json({ message: `Rental with id: ${rentalData._id} was added` });
-// };
+  Rental.create(rentalData, (error, createdRental) => {
+    if (error) {
+      return res.status(422).send({
+        errors: [
+          { title: 'Rental Error!', message: 'Cannot post rental data' },
+        ],
+      });
+    }
+    return res.json({
+      message: `Rental with id: ${createdRental._id} was added`,
+    });
+  });
+};
 
 // exports.deleteRental = (req, res) => {
 //   const { id } = req.params;

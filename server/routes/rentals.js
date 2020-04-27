@@ -7,14 +7,14 @@ const router = express.Router();
 const {
   getRentals,
   getRentalById,
-  // createRental,
+  createRental,
   // deleteRental,
   // updateRental,
 } = require('../controllers/rentals');
 
 router.get('', getRentals);
 router.get('/:rentalId', getRentalById);
-// router.post('', createRental);
+router.post('', createRental);
 // router.delete('/:id', deleteRental);
 // router.patch('/:id', updateRental);
 
