@@ -1,11 +1,14 @@
+
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import {
+  Switch,
+  Route
+} from "react-router-dom";
 
 import RentalHome from './pages/RentalHome';
-import Login from './pages/Login';
-
-import Register from './pages/Register';
 import RentalDetail from './pages/RentalDetail';
+import Login from './pages/Login';
+import Register from './pages/Register';
 
 const Routes = () => {
   return (
@@ -25,7 +28,7 @@ const Routes = () => {
         </Route>
       </Switch>
     </div>
-  );
-};
+  )
+}
 
 export default Routes;

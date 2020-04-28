@@ -1,22 +1,25 @@
 //
 //
+import axios from 'axios';
 
-import { rentalData } from 'store/data';
-
-export const fetchRentals = () => {
-  return {
-    type: 'FETCH_RENTALS',
-    rentals: rentalData,
-  };
+export const fetchRentals = () => (dispatch) => {
+  axios.get('http://localhost:3000/api/v1/rentals').then((res) => {
+    const rentals = res.data;
+    dispatch({
+      type: 'FETCH_RENTALS',
+      rentals,
+    });
+  });
 };
 
-export const fetchRentalById = (rentalId) => {
-  const rental = rentalData.find((rental) => rental._id === rentalId);
-
-  return {
+export const fetchRentalById = (rentalId) => async (dispatch) => {
+  const res = await axios.get(
+    `http://localhost:3000/api/v1/rentals/${rentalId}`
+  );
+  dispatch({
     type: 'FETCH_RENTAL_BY_ID',
-    rental,
-  };
+    rental: res.data,
+  });
 };
 
 export const createRental = (rental) => {

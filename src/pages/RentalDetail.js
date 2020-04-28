@@ -1,20 +1,17 @@
-//
-//
-import React, { Component } from 'react';
 
+import React from 'react';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-
 import { fetchRentalById } from 'actions';
 import { capitalize } from 'helpers/functions';
 
-// import FontAwesome from 'react-fontawesome';
 
-class RentalDetail extends Component {
-  //
+class RentalDetail extends React.Component {
+
   componentDidMount() {
     const { id } = this.props.match.params;
-    this.props.dispatch(fetchRentalById(id));
+    this.props.dispatch(fetchRentalById(id))
   }
 
   render() {
@@ -48,51 +45,45 @@ class RentalDetail extends Component {
                 <h2 className="rental-city">{capitalize(rental.city)}</h2>
                 <div className="rental-room-info">
                   {/* <!-- TODO: Display numOfRooms --> */}
-                  <span>
-                    <i className="fa fa-building"></i>
-                    {rental.numOfRooms} bedrooms
-                  </span>
-                  {/* // <!-- TODO: Display numOfRooms + 4 --> */}
-                  <span>
-                    <i className="fa fa-user"></i>
-                    {rental.numOfRooms + 4} guests
-                  </span>
+                  <span><i className="fa fa-building"></i>{rental.numOfRooms} bedrooms</span>
+                    {/* // <!-- TODO: Display numOfRooms + 4 --> */}
+                  <span><i className="fa fa-user"></i> {rental.numOfRooms + 4} guests</span>
                   {/* // <!-- TODO: Display numOfRooms + 2 --> */}
-                  <span>
-                    <i className="fa fa-bed"></i>
-                    {rental.numOfRooms + 2} beds
-                  </span>
+                  <span><i className="fa fa-bed"></i> {rental.numOfRooms + 2} beds</span>
                 </div>
                 {/* <!-- TODO: Display description --> */}
-                <p className="rental-description">{rental.description}</p>
-                <hr />
+                <p className="rental-description">
+                  {rental.description}
+                </p>
+                <hr/>
                 <div className="rental-assets">
                   <h3 className="title">Assets</h3>
                   <div className="row">
                     <div className="col-md-6">
                       <span>
+                        {/* <FontAwesomeIcon icon="asterisk" /> Cooling */}
                         <i className="fa fa-asterisk"></i> Cooling
-                        {/* <FontAwesome
-                          name="rocket"
-                          style={{ color: 'red' }}
-                          size="2x"
-                        /> */}
                       </span>
                       <span>
+                        {/* <FontAwesomeIcon icon="thermometer" /> Heating */}
                         <i className="fa fa-thermometer"></i> Heating
                       </span>
                       <span>
+                        {/* <FontAwesomeIcon icon="location-arrow" /> Iron */}
                         <i className="fa fa-location-arrow"></i> Iron
                       </span>
                     </div>
                     <div className="col-md-6">
                       <span>
+                        {/* <FontAwesomeIcon icon="desktop" /> Working area */}
                         <i className="fa fa-desktop"></i> Working area
                       </span>
                       <span>
+                        {/* <FontAwesomeIcon icon="cube" /> Washing machine */}
                         <i className="fa fa-cube"></i> Washing machine
                       </span>
                       <span>
+                        {/* <FontAwesomeIcon icon="archive" /> Dishwasher */}
                         <i className="fa fa-cube"></i> Dishwasher
                       </span>
                     </div>
@@ -103,13 +94,12 @@ class RentalDetail extends Component {
             <div className="col-md-4"> BOOKING</div>
           </div>
         </div>
-      </section>
-    );
+      </section> 
+    )
   }
 }
 
-const mapStateToProps = ({ rental }) => ({ rental });
+const mapStateToProps = ({rental}) => ({ rental })
 
 const RentalDetailWithRouter = withRouter(RentalDetail);
-
 export default connect(mapStateToProps)(RentalDetailWithRouter);

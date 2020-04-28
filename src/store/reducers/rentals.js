@@ -1,8 +1,13 @@
-//
-//
+
+
+
+// PURE FUNCTION
+// Dont mutate arguments
+// No API calls, no route transitions
+// Math.random()
 
 const rentals = (state = [], action) => {
-  switch (action.type) {
+  switch(action.type) {
     case 'FETCH_RENTALS':
       return action.rentals;
     case 'CREATE_RENTAL':
@@ -10,6 +15,6 @@ const rentals = (state = [], action) => {
     default:
       return state;
   }
-};
+}
 
 export default rentals;

@@ -1,12 +1,10 @@
-//
-//
+
 @import './colors.scss';
 @import './header.scss';
 @import './rental-home';
-@import './rental-details';
+@import './rental-detail';
 
-html,
-body {
+html, body {
   height: 100%;
 }
 
@@ -50,9 +48,7 @@ body {
     border-color: $main-app-color;
     color: $main-app-color;
 
-    &:hover,
-    &:focus,
-    &:active {
+    &:hover, &:focus, &:active {
       background-color: $main-app-color;
       border-color: $main-app-color;
       color: white;

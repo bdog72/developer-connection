@@ -1,10 +1,13 @@
-//
-//
+
+
 import React from 'react';
 
 class Login extends React.Component {
+
   render() {
-    return <p>Login</p>;
+    return (
+      <p>Login</p>
+    )
   }
 }
 
