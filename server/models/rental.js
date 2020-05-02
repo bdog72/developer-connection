@@ -8,7 +8,7 @@ const rentalSchema = new Schema({
   title: {
     type: String,
     required: true,
-    maxlength: [128, 'Invalid length! Maximum characters is 128 '],
+    maxlength: [128, 'Invalid length! Maximum characters is 128!'],
   },
   city: {
     type: String,
