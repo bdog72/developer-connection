@@ -22,7 +22,7 @@ class RentalHome extends React.Component {
 
     return (
       <div className="card-list">
-        <h1 className="page-title">Your Home All Around the World</h1>
+        <h1 className="page-title">Your Home All Around the Bozo</h1>
         <div className="row">{this.renderRentals(rentals)}</div>
       </div>
     );
