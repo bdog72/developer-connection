@@ -8,7 +8,6 @@ exports.login = (req, res) => {
   const { email, password } = req.body;
 
   if (!password || !email) {
-    return res.status(422).send({
     return res.sendApiError({
       title: 'Missing Data',
       detail: 'Email or password is missing!',
