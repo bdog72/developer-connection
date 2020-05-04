@@ -1,6 +1,19 @@
 //
 //
-const rentals = [
+exports.users = [
+  {
+    username: 'Test User',
+    email: 'test@gmail.com',
+    password: 'testtest',
+  },
+  {
+    username: 'Test User1',
+    email: 'test1@gmail.com',
+    password: 'testtest1',
+  },
+];
+
+exports.rentals = [
   {
     title: 'Nice view on ocean',
     city: 'San Francisco',
@@ -38,5 +51,3 @@ const rentals = [
     dailyPrice: 23,
   },
 ];
-
-module.exports = rentals;

@@ -1,21 +1,15 @@
-//
-//
 
 const express = require('express');
 const router = express.Router();
-
-const {
+const { 
   getRentals,
   getRentalById,
-  createRental,
-  // deleteRental,
-  // updateRental,
-} = require('../controllers/rentals');
+  createRental } = require('../controllers/rentals');
 
 router.get('', getRentals);
 router.get('/:rentalId', getRentalById);
 router.post('', createRental);
-// router.delete('/:id', deleteRental);
-// router.patch('/:id', updateRental);
 
 module.exports = router;
+
+// noSQL - no tables, we are keeping data in JSON format
