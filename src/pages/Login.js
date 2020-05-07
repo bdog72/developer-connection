@@ -1,16 +1,10 @@
-//
-//
 import React from 'react';
 import LoginForm from 'components/forms/LoginForm';
-
-// import { loginUser } from '../actions';
 import { Redirect } from 'react-router-dom';
-
 import ApiErrors from 'components/forms/ApiErrors';
 import { withAuth } from 'providers/AuthProvider';
 
 class Login extends React.Component {
-  //
   constructor() {
     super();
     this.state = {
@@ -23,16 +17,15 @@ class Login extends React.Component {
     this.props.auth
       .signIn(loginData)
       .then((token) => {
-        console.log(token);
-        this.setState({
-          shouldRedirect: true,
-        });
+        // console.log(token);
+        this.setState({ shouldRedirect: true });
       })
       .catch((errors) => this.setState({ errors }));
   };
 
   render() {
     const { errors, shouldRedirect } = this.state;
+    const { message } = this.props.location.state || '';
 
     if (shouldRedirect) {
       return <Redirect to={{ pathname: '/' }} />;
@@ -43,16 +36,9 @@ class Login extends React.Component {
         <div className="row">
           <div className="col-md-5">
             <h1 className="page-title">Login</h1>
-            {/* <!-- <div className="alert alert-success">
-              Some message
-            </div> --> */}
+            {message && <div className="alert alert-success">{message}</div>}
             <LoginForm onSubmit={this.signIn} />
             <ApiErrors errors={errors} />
-            {/* <div className="alert alert-danger">
-              <p>
-              Some Error
-            </p>
-          </div> --> */}
           </div>
           <div className="col-md-6 ml-auto">
             <div className="image-container">

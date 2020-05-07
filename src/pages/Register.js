@@ -1,11 +1,7 @@
-//
-//
 import React from 'react';
 import RegisterForm from 'components/forms/RegisterForm';
-
-import { registerUser } from '../actions';
+import { registerUser } from 'actions';
 import { Redirect } from 'react-router-dom';
-
 import ApiErrors from 'components/forms/ApiErrors';
 
 class Register extends React.Component {
@@ -24,7 +20,14 @@ class Register extends React.Component {
     const { shouldRedirect, errors } = this.state;
 
     if (shouldRedirect) {
-      return <Redirect to={{ pathname: '/login' }} />;
+      return (
+        <Redirect
+          to={{
+            pathname: '/login',
+            state: { message: 'You have been successfully registered' },
+          }}
+        />
+      );
     }
 
     return (
@@ -33,13 +36,6 @@ class Register extends React.Component {
           <div className="col-md-5">
             <h1 className="page-title">Register</h1>
             <RegisterForm onSubmit={this.signUp} />
-            {/* {errors && errors.length > 0 && (
-              <div className="alert alert-danger">
-                {errors.map((e) => (
-                  <p key={e.title}>{e.detail}</p>
-                ))}
-              </div>
-            )} */}
             <ApiErrors errors={errors} />
           </div>
           <div className="col-md-6 ml-auto">

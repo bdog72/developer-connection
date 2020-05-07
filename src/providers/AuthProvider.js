@@ -1,28 +1,38 @@
-//
-//
 import React from 'react';
 import { connect } from 'react-redux';
-
-import { loginUser } from 'actions';
+import { loginUser, userAuthenticated } from 'actions';
 import jwt from 'jsonwebtoken';
-
 import moment from 'moment';
 
 const { createContext, useContext } = React;
+
 const AuthContext = createContext(null);
 
-export const AuthBaseProvider = (props) => {
+const AuthBaseProvider = ({ children, dispatch }) => {
+  //
   //
   const checkAuthState = () => {
-    const token = getToken();
-
-    // if (token && ) {
-
-    // }
+    const decodedToken = decodeToken(getToken());
+    if (decodedToken && moment().isBefore(getExpiration(decodedToken))) {
+      dispatch(userAuthenticated(decodedToken));
+    }
   };
 
-  const getExpiration = (token) => {
-    const exp = decodeToken(token).exp;
+  const isAuthenticated = () => {
+    // const token = getToken();
+    // if (!token) {
+    //   return false;
+    // }
+    const decodedToken = decodeToken(getToken());
+    return decodedToken && isTokenValid(decodedToken);
+  };
+
+  const isTokenValid = (decodedToken) => {
+    return decodeToken && moment().isBefore(getExpiration(decodedToken));
+  };
+
+  const getExpiration = (decodedToken) => {
+    return moment.unix(decodedToken.exp);
   };
 
   const getToken = () => {
@@ -33,10 +43,18 @@ export const AuthBaseProvider = (props) => {
     return jwt.decode(token);
   };
 
+  const signOut = () => {
+    localStorage.removeItem('bwm_token');
+    dispatch({
+      type: 'USER_SIGNED_OUT',
+    });
+  };
+
   const signIn = (loginData) => {
     return loginUser(loginData).then((token) => {
       localStorage.setItem('bwm_token', token);
       const decodedToken = decodeToken(token);
+      dispatch(userAuthenticated(decodedToken));
       return token;
     });
   };
@@ -44,12 +62,12 @@ export const AuthBaseProvider = (props) => {
   const authApi = {
     signIn,
     checkAuthState,
+    signOut,
+    isAuthenticated,
   };
 
   return (
-    <AuthContext.Provider value={authApi}>
-      {props.children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={authApi}>{children}</AuthContext.Provider>
   );
 };
 
@@ -59,12 +77,8 @@ export const useAuth = () => {
   return useContext(AuthContext);
 };
 
-export const withAuth = (Component) => {
-  return function (props) {
-    return (
-      <AuthContext.Consumer>
-        {(authApi) => <Component {...props} auth={authApi} />}
-      </AuthContext.Consumer>
-    );
-  };
-};
+export const withAuth = (Component) => (props) => (
+  <AuthContext.Consumer>
+    {(authApi) => <Component {...props} auth={authApi} />}
+  </AuthContext.Consumer>
+);

@@ -1,14 +1,16 @@
-
 import React from 'react';
-import {
-  Switch,
-  Route
-} from "react-router-dom";
+import { Switch, Route } from 'react-router-dom';
 
 import RentalHome from './pages/RentalHome';
 import RentalDetail from './pages/RentalDetail';
+
 import Login from './pages/Login';
 import Register from './pages/Register';
+
+import SecretPage from './pages/SecretPage';
+import AuthRoute from './components/auth/AuthRoute';
+
+import GuestRoute from './components/auth/GuestRoute';
 
 const Routes = () => {
   return (
@@ -20,15 +22,18 @@ const Routes = () => {
         <Route path="/rentals/:id">
           <RentalDetail />
         </Route>
-        <Route path="/login">
+        <AuthRoute path="/secret">
+          <SecretPage />
+        </AuthRoute>
+        <GuestRoute path="/login">
           <Login />
-        </Route>
-        <Route path="/register">
+        </GuestRoute>
+        <GuestRoute path="/register">
           <Register />
-        </Route>
+        </GuestRoute>
       </Switch>
     </div>
-  )
-}
+  );
+};
 
 export default Routes;
