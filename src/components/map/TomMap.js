@@ -7,17 +7,27 @@ import { useMap } from '../../providers/MapProvider';
 
 const TomMap = ({ location }) => {
   let map = useRef(null);
-  const { initMap, requestGeoLocation, setCenter } = useMap();
+  const {
+    initMap,
+    getGeoPosition,
+    setCenter,
+    addMarker,
+    addPopUpMessage,
+  } = useMap();
 
   const getGeoLocation = useCallback(
     (location) => {
       location &&
-        requestGeoLocation(location).then((position) => {
-          // map.current.setCenter(new tt.LngLat(position.lon, position.lat));
-          setCenter(map.current, position);
-        });
+        getGeoPosition(location)
+          .then((position) => {
+            setCenter(map.current, position);
+            addMarker(map.current, position);
+          })
+          .catch((error) => {
+            addPopUpMessage(map.current, error);
+          });
     },
-    [requestGeoLocation, map, setCenter]
+    [map, setCenter, addMarker, addPopUpMessage, getGeoPosition]
   );
 
   useEffect(() => {
