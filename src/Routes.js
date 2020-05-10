@@ -4,6 +4,8 @@ import { Switch, Route } from 'react-router-dom';
 import RentalHome from './pages/RentalHome';
 import RentalDetail from './pages/RentalDetail';
 
+import RentalNew from './pages/RentalNew';
+
 import Login from './pages/Login';
 import Register from './pages/Register';
 
@@ -19,6 +21,9 @@ const Routes = () => {
         <Route exact path="/">
           <RentalHome />
         </Route>
+        <AuthRoute path="/rentals/new">
+          <RentalNew />
+        </AuthRoute>
         <Route path="/rentals/:id">
           <RentalDetail />
         </Route>
