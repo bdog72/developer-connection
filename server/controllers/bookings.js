@@ -4,7 +4,7 @@
 const Booking = require('../models/booking');
 const moment = require('moment');
 
-exports.createBooking = (req, res) => {
+exports.createBooking = async (req, res) => {
   const bookingData = req.body;
   const booking = new Booking({ ...bookingData, user: res.locals.user });
 
@@ -14,23 +14,15 @@ exports.createBooking = (req, res) => {
       detail: 'Dates are invalid',
     });
   }
+  try {
+    const rentalBookings = await Booking.find({ rental: booking.rental });
+    const isBookingValid = checkIfBookingIsValid(booking, rentalBookings);
 
-  Booking.find({ rental: booking.rental }, (error, rentalBookings) => {
-    if (error) {
-      return res.mongoError(error);
-    }
-
-    const isValid = checkIfBookingIsValid(booking, rentalBookings);
-
-    if (isValid) {
-      booking.save((error, savedBooking) => {
-        if (error) {
-          return res.mongoError(error);
-        }
-        return res.json({
-          startAt: savedBooking.startAt,
-          endAt: savedBooking.endAt,
-        });
+    if (isBookingValid) {
+      const savedBooking = await booking.save();
+      return res.json({
+        startAt: savedBooking.startAt,
+        endAt: savedBooking.endAt,
       });
     } else {
       return res.sendApiError({
@@ -38,7 +30,9 @@ exports.createBooking = (req, res) => {
         detail: 'Chosen dates are already taken',
       });
     }
-  });
+  } catch (error) {
+    return res.mongoError(error);
+  }
 };
 
 function checkIfBookingDatesAreValid(booking) {
