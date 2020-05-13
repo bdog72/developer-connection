@@ -38,7 +38,7 @@ exports.rentals = [
   {
     title: 'Modern apartment in center',
     city: 'New York',
-    street: 'Time Square',
+    street: 'Times Square',
     category: 'apartment',
     image:
       'https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg',
