@@ -9,13 +9,19 @@ const BwmModal = ({
   title = 'Modal Window',
   subtitle = 'Confirm your data',
   children,
+  onSubmit,
+  openBtn: OpenBtn,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+
   return (
     <>
-      <button onClick={() => setIsOpen(true)} className="btn btn-success">
-        Open
-      </button>
+      {!OpenBtn && (
+        <button onClick={() => setIsOpen(true)} className="btn btn-success">
+          Open
+        </button>
+      )}
+      {OpenBtn && <div onClick={() => setIsOpen(true)}>{OpenBtn}</div>}
       <Modal
         focusTrapped={false}
         open={isOpen}
@@ -26,7 +32,7 @@ const BwmModal = ({
         <p className="modal-subtitle">{subtitle}</p>
         <div className="modal-body">{children}</div>
         <div className="modal-footer">
-          <button type="button" className="btn btn-bwm-main">
+          <button onClick={onSubmit} type="button" className="btn btn-bwm-main">
             Confirm
           </button>
           <button

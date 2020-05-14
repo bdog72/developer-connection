@@ -12,3 +12,5 @@ import 'bootstrap-daterangepicker/daterangepicker.css';
 
 const rootElement = document.getElementById('root');
 ReactDOM.render(<App />, rootElement);
+
+/// PRACTICE ///
