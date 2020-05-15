@@ -32,7 +32,11 @@ const BwmModal = ({
         <p className="modal-subtitle">{subtitle}</p>
         <div className="modal-body">{children}</div>
         <div className="modal-footer">
-          <button onClick={onSubmit} type="button" className="btn btn-bwm-main">
+          <button
+            onClick={() => onSubmit(() => setIsOpen(false))}
+            type="button"
+            className="btn btn-bwm-main"
+          >
             Confirm
           </button>
           <button

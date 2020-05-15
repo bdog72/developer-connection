@@ -8,6 +8,8 @@ import BwmModal from '../shared/Modal';
 import Moment from 'moment';
 import { extendMoment } from 'moment-range';
 
+import { createBooking } from 'actions';
+
 const moment = extendMoment(Moment);
 
 class BookingReserve extends Component {
@@ -45,7 +47,8 @@ class BookingReserve extends Component {
       proposedBooking: {
         ...this.state.proposedBooking,
         nights: this.nights,
-        totalPrice: this.totalPrice,
+        price: this.price,
+        rental: this.props.rental,
       },
     });
   };
@@ -58,13 +61,21 @@ class BookingReserve extends Component {
     this.setState({
       proposedBooking: {
         ...this.state.proposedBooking,
-        guests: event.target.value,
+        guests: parseInt(event.target.value, 10),
       },
     });
   };
 
-  reserveRental = () => {
-    alert(JSON.stringify(this.state.proposedBooking));
+  reserveRental = (closeCallback) => {
+    // alert(JSON.stringify(this.state.proposedBooking));
+    createBooking(this.state.proposedBooking)
+      .then((newBooking) => {
+        alert('Success');
+        closeCallback();
+      })
+      .catch((error) => {
+        alert('Error');
+      });
   };
 
   get nights() {
@@ -78,7 +89,7 @@ class BookingReserve extends Component {
     // return startAt && endAt && moment.range(startAt, endAt).length;
   }
 
-  get totalPrice() {
+  get price() {
     const {
       rental: { dailyPrice },
     } = this.props;
@@ -97,7 +108,7 @@ class BookingReserve extends Component {
   render() {
     const { rental } = this.props;
     const {
-      proposedBooking: { nights, guests, totalPrice },
+      proposedBooking: { nights, guests, price },
     } = this.state;
     return (
       <div className="booking">
@@ -154,7 +165,7 @@ class BookingReserve extends Component {
             Guests: <em>{guests}</em>
           </p>
           <p>
-            Price: <em>{totalPrice}</em>
+            Price: <em>{price}</em>
           </p>
           <p>Do you confirm your booking for selected days ?</p>
         </BwmModal>
