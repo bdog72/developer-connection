@@ -1,57 +1,31 @@
 {
-  "name": "book-with-me",
-  "version": "0.1.0",
-  "private": true,
+  "name": "developer-connection",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bdog72/developer-connection.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bdog72/developer-connection/issues"
+  },
+  "homepage": "https://github.com/bdog72/developer-connection#readme",
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.2.1",
-    "@tomtom-international/web-sdk-maps": "^5.53.0",
     "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
-    "body-parser": "^1.19.0",
-    "bootstrap": "^4.4.1",
-    "bootstrap-daterangepicker": "^3.0.5",
+    "concurrently": "^5.2.0",
+    "config": "^3.3.1",
     "express": "^4.17.1",
-    "http-proxy-middleware": "^1.0.3",
-    "jquery": "^3.4.1",
+    "express-validator": "^6.4.1",
+    "gravatar": "^1.8.0",
     "jsonwebtoken": "^8.5.1",
-    "moment": "^2.25.3",
-    "moment-range": "^4.0.2",
-    "mongoose": "^5.9.10",
-    "node-sass": "^4.13.1",
-    "popper.js": "^1.16.0",
-    "react": "^16.13.1",
-    "react-bootstrap-daterangepicker": "^4.1.0",
-    "react-dom": "^16.13.1",
-    "react-fontawesome": "^1.7.1",
-    "react-hook-form": "^5.6.0",
-    "react-redux": "^7.2.0",
-    "react-responsive-modal": "^5.0.2",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "3.4.1",
-    "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "mongoose": "^5.9.14",
+    "normalize-url": "^5.0.0"
   }
 }
