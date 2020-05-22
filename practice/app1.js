@@ -1,28 +1,47 @@
 //
 //
-console.log(123);
+// console.log('Bozo Boy');
+// console.log(this);
 
-function tipCalculator(bill) {
-  let percentage;
-  if (bill < 50) {
-    percentage = 0.2;
-  } else if (bill >= 50 && bill <= 200) {
-    percentage = 0.15;
-  } else {
-    percentage = 0.1;
-  }
-  return percentage * bill;
-}
+// function calcAge(year) {
+//   console.log(2020 - year);
+//   console.log(this);
+// }
 
-const bills = [124, 48, 268];
-const tips = [
-  tipCalculator(bills[0]),
-  tipCalculator(bills[1]),
-  tipCalculator(bills[2]),
-];
-// const total = tips.toFixed(2);
-console.log(tips);
+// calcAge(1972);
 
-// let tipTotal = tipCalculator(75);
-// let total = tipTotal + percentage;
-// console.log(tipTotal);
+const john = {
+  name: 'Bozo',
+  yearOfBirth: 1972,
+  calcAge1: function () {
+    console.log(this);
+    console.log(2020 - this.yearOfBirth);
+
+    // function inner() {
+    //   console.log(this);
+    // }
+    // inner();
+  },
+};
+
+john.calcAge1();
+
+const mike = {
+  name: 'Mike',
+  yearOfBirth: 1984,
+};
+
+mike.calcAge1 = john.calcAge1;
+mike.calcAge1();
+
+// calculateAge(1972);
+
+// function calculateAge(year) {
+//   console.log(2020 - year);
+// }
+
+// const calcYears = function (year) {
+//   console.log(65 - (2020 - year));
+// };
+
+// calcYears(1972);

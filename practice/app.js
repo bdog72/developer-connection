@@ -1,70 +1,78 @@
-console.log('Bozo Boy');
+//
+//
+console.log(12345);
 
-console.log('Bozo Boy1');
-const names = ['John', 'Mark', 'Jane'];
-const years = new Array(1990, 1969, 1948, 'Bozo');
+const john = {
+  fullName: 'John Smith',
+  bills: [124, 48, 268, 180, 42],
+  calcTips: function () {
+    this.tips = [];
+    this.finalValues = [];
+    this.bozo = [];
+    for (let i = 0; i < this.bills.length; i++) {
+      let percentage;
+      let bill = this.bills[i];
+      if (bill < 50) {
+        percentage = 0.2;
+      } else if (bill >= 50 && bill < 200) {
+        percentage = 0.15;
+      } else {
+        percentage = 0.1;
+      }
 
-console.log(names);
-console.log(years.length);
-
-names[1] = 'Bozo';
-console.log(names);
-
-const john = ['john', 'smith', 1990, 'teacher', false];
-
-john.push('blue');
-john.unshift('Mr.');
-console.log(john);
-
-john.pop();
-console.log(john);
-
-console.log(john.indexOf(1990));
-john.indexOf('designer') === -1 ? console.log('Yo') : '';
-
-console.log(john);
-// console.log(john);
-
-var whatDoYouDo = function (job, firstName) {
-  switch (job) {
-    case 'teacher':
-      return `${firstName} teaches kids how to code`;
-    // break;
-    case 'driver':
-      return `${firstName} drives you around`;
-    // break;
-    case 'designer':
-      return `${firstName} designs websites`;
-    // break;
-    default:
-      return `No idea what ${firstName} does`;
-  }
+      this.tips[i] = bill * percentage;
+      this.finalValues[i] = bill + bill * percentage;
+      this.bozo = 2;
+    }
+  },
 };
 
-let result = whatDoYouDo('teacher', 'Bozo');
-console.log(result);
+// console.log(john);
 
-result = whatDoYouDo('driver', 'Molly');
-console.log(result);
+const mark = {
+  fullName: 'Mark Miller',
+  bills: [77, 5, 10, 45],
+  calcTips: function () {
+    this.tips = [];
+    this.finalValues = [];
+    this.bozo = [];
+    for (let i = 0; i < this.bills.length; i++) {
+      let percentage;
+      let bill = this.bills[i];
+      if (bill < 100) {
+        percentage = 0.2;
+      } else if (bill >= 100 && bill < 300) {
+        percentage = 0.1;
+      } else {
+        percentage = 0.25;
+      }
 
-result = whatDoYouDo('designer', 'Josey');
-console.log(result);
+      this.tips[i] = bill * percentage;
+      this.finalValues[i] = bill + bill * percentage;
+      this.bozo = 2;
+    }
+  },
+};
 
-result = whatDoYouDo('', 'Bozo');
-console.log(result);
-
-function calculateAge(birthYear) {
-  return 2020 - birthYear;
+function calcAverage(tips) {
+  let sum = 0;
+  for (i = 0; i < tips.length; i++) {
+    sum = sum + tips[i];
+  }
+  return sum / tips.length;
 }
 
-const ageBrian = calculateAge(1972);
-const ageMolly = calculateAge(2012);
-console.log(ageBrian + ' - ' + ageMolly);
+john.calcTips();
+mark.calcTips();
 
-function yearsUntilRetirement(year, firstName) {
-  const age = calculateAge(year);
-  const total = 65 - age;
-  console.log(`${firstName} retires in ${total} years `);
+john.average = calcAverage(john.tips);
+mark.average = calcAverage(mark.tips);
+console.log(john, mark);
+
+if (john.average > mark.average) {
+  console.log(`${john.fullName} family pays higher tips`);
+} else {
+  console.log(
+    `${mark.fullName}'s family pays higher tips, with an average tip of ${mark.average}%`
+  );
 }
-
-yearsUntilRetirement(1972, 'Brian');

@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-// import App from './App';
-import Bozo from './practice';
+import App from './App';
+// import Bozo from './practice';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Bozo />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
