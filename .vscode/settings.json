@@ -9,6 +9,7 @@
     "mongodb",
     "mysecrettoken",
     "repos",
+    "uuidv",
     "youtube"
   ]
 }
