@@ -339,6 +339,10 @@ button {
   height: 100vh;
 }
 
+.landing-page-login {
+  margin-top: 30px;
+}
+
 .landing-inner {
   color: #fff;
   height: 100%;

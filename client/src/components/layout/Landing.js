@@ -29,6 +29,11 @@ const Landing = ({ isAuthenticated }) => {
               Login
             </Link>
           </div>
+          <div className="landing-page-login">
+            <h1>Login Credentials</h1>
+            <h3>Email Address: test1@test.com</h3>
+            <h3>Password: 123456</h3>
+          </div>
         </div>
       </div>
     </section>

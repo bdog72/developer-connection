@@ -63,6 +63,11 @@ const Login = ({ login, isAuthenticated }) => {
       <p className="my-1">
         Don't have an account? <Link to="/register">Sign Up</Link>
       </p>
+      <div className="landing-page-login">
+        <h1>Login Credentials</h1>
+        <h3>Email Address: test1@test.com</h3>
+        <h3>Password: 123456</h3>
+      </div>
     </Fragment>
   );
 };
