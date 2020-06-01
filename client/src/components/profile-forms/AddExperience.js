@@ -3,7 +3,8 @@
 import React, { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+// import { Link, withRouter } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 import { addExperience } from '../../actions/profile';
@@ -115,6 +116,9 @@ const AddExperience = ({ addExperience, history }) => {
           ></textarea>
         </div>
         <input type="submit" className="btn btn-primary my-1" />
+        {/* <Link className="btn btn-light my-1" tp="/dashboard">
+          Go Back
+        </Link> */}
         <a className="btn btn-light my-1" href="dashboard.html">
           Go Back
         </a>
@@ -127,4 +131,4 @@ AddExperience.propTypes = {
   addExperience: PropTypes.func.isRequired,
 };
 
-export default connect(null, { addExperience })(AddExperience);
+export default connect(null, { addExperience })(withRouter(AddExperience));
